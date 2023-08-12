@@ -7,6 +7,7 @@ import (
 	"io"
 	"net/http"
 	"strconv"
+	"strings"
 
 	"golang.org/x/exp/slices"
 )
@@ -78,7 +79,7 @@ func (s *SeoulBusStore) GetNearbyStations(ctx context.Context, lat, lng float64)
 
 	// 경유 정류장은 응답에 포함하지 않음
 	result = slices.DeleteFunc(result, func(i Station) bool {
-		return i.Code == "" || i.Code == "0"
+		return i.Code == "" || i.Code == "0" || strings.HasSuffix(i.Name, "(경유)")
 	})
 	return result, nil
 }
@@ -92,6 +93,7 @@ func (s *SeoulBusStore) requestGet(ctx context.Context, path string, params map[
 	for k, v := range params {
 		q.Add(k, v)
 	}
+	req.URL.RawQuery = q.Encode()
 
 	res, err := s.httpClient.Do(req)
 	if err != nil {

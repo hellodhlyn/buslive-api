@@ -36,7 +36,7 @@ func TestSeoulBusStore_GetNearbyStations(t *testing.T) {
 	stations, err := seoulStore.GetNearbyStations(context.Background(), 127.0277, 37.4979)
 	assert.Nil(t, err)
 
-	assert.Equal(t, 44, len(stations))
+	assert.Equal(t, 42, len(stations))
 	assert.Equal(t, "강남역", stations[0].Name)
 	assert.Equal(t, "22339", stations[0].Code)
 	assert.Equal(t, "121000262", stations[0].ID)
