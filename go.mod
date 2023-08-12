@@ -2,11 +2,15 @@ module github.com/hellodhlyn/buslive-api
 
 go 1.20
 
-require github.com/stretchr/testify v1.8.4
+require (
+	github.com/aws/aws-lambda-go v1.19.1
+	github.com/stretchr/testify v1.8.4
+)
 
 require golang.org/x/sys v0.1.0 // indirect
 
 require (
+	github.com/awslabs/aws-lambda-go-api-proxy v0.14.0
 	github.com/davecgh/go-spew v1.1.1 // indirect
 	github.com/julienschmidt/httprouter v1.3.0
 	github.com/pmezard/go-difflib v1.0.0 // indirect
