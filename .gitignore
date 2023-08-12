@@ -3,6 +3,11 @@ node_modules/
 
 .envrc
 
+### IDE states
+.idea/
+.code/
+.vscode/
+
 ### Terraform
 **/.terraform/*
 
