@@ -9,6 +9,8 @@ provider "aws" {
 module "lambda" {
   source = "./modules/lambda"
   stage  = terraform.workspace == "default" ? "prod" : terraform.workspace
+
+  seoul_bus_api_key = sensitive(var.seoul_bus_api_key)
 }
 
 module "api-gateway" {

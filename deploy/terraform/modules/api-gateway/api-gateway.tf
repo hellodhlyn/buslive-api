@@ -33,6 +33,18 @@ resource "aws_api_gateway_integration" "buslive-lambda" {
 
 resource "aws_api_gateway_deployment" "buslive-api" {
   rest_api_id = aws_api_gateway_rest_api.buslive-api.id
+
+  triggers = {
+    redeployment = sha1(jsonencode([
+      aws_api_gateway_resource.buslive-api-proxy.id,
+      aws_api_gateway_method.buslive-api-proxy.id,
+      aws_api_gateway_integration.buslive-lambda.id,
+    ]))
+  }
+
+  lifecycle {
+    create_before_destroy = true
+  }
 }
 
 resource "aws_api_gateway_stage" "buslive-api" {
@@ -45,5 +57,17 @@ resource "aws_api_gateway_stage" "buslive-api" {
 
     # https://docs.aws.amazon.com/apigateway/latest/developerguide/set-up-logging.html
     format = "$context.identity.sourceIp $context.identity.caller $context.identity.user [$context.requestTime] \"$context.httpMethod $context.resourcePath $context.protocol\" $context.status $context.responseLength $context.requestId"
+  }
+}
+
+resource "aws_api_gateway_method_settings" "buslive-api-proxy" {
+  rest_api_id = aws_api_gateway_rest_api.buslive-api.id
+  stage_name  = aws_api_gateway_stage.buslive-api.stage_name
+  method_path = "*/*"
+
+  settings {
+    logging_level          = "INFO"
+    throttling_rate_limit  = 5
+    throttling_burst_limit = 10
   }
 }

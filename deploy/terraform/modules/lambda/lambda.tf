@@ -15,4 +15,10 @@ resource "aws_lambda_function" "buslive-api" {
   architectures    = [ "x86_64" ]
   timeout          = 10
   memory_size      = 128
+
+  environment {
+    variables = {
+      SEOUL_BUS_API_KEY = sensitive(var.seoul_bus_api_key)
+    }
+  }
 }
