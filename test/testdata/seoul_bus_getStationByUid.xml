@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ServiceResult>
+	<comMsgHeader/>
+	<msgHeader>
+		<headerCd>0</headerCd>
+		<headerMsg>정상적으로 처리되었습니다.</headerMsg>
+		<itemCount>0</itemCount>
+	</msgHeader>
+	<msgBody>
+		<itemList>
+			<adirection>강남역</adirection>
+			<arrmsg1>4분37초후[2번째 전]</arrmsg1>
+			<arrmsg2>17분19초후[8번째 전]</arrmsg2>
+			<arrmsgSec1>4분37초후[2번째 전]</arrmsgSec1>
+			<arrmsgSec2>17분19초후[8번째 전]</arrmsgSec2>
+			<arsId>22339</arsId>
+			<busRouteAbrv>340</busRouteAbrv>
+			<busRouteId>100100055</busRouteId>
+			<busType1>0</busType1>
+			<busType2>1</busType2>
+			<congestion1>3</congestion1>
+			<congestion2>4</congestion2>
+			<deTourAt>00</deTourAt>
+			<firstTm>0430  </firstTm>
+			<gpsX>127.0268505284</gpsX>
+			<gpsY>37.4975009943</gpsY>
+			<isArrive1>0</isArrive1>
+			<isArrive2>0</isArrive2>
+			<isFullFlag1>0</isFullFlag1>
+			<isFullFlag2>0</isFullFlag2>
+			<isLast1>0</isLast1>
+			<isLast2>0</isLast2>
+			<lastTm>2310  </lastTm>
+			<nextBus></nextBus>
+			<nxtStn>수협서초지점</nxtStn>
+			<posX>202374.04422700306</posX>
+			<posY>444233.0800207369</posY>
+			<repTm1>2021-12-26 20:06:14.0</repTm1>
+			<rerdieDiv1>2</rerdieDiv1>
+			<rerdieDiv2>2</rerdieDiv2>
+			<rerideNum1>8</rerideNum1>
+			<rerideNum2>25</rerideNum2>
+			<routeType>3</routeType>
+			<rtNm>340</rtNm>
+			<sectNm>롯데칠성~강남역</sectNm>
+			<sectOrd1>54</sectOrd1>
+			<sectOrd2>48</sectOrd2>
+			<stId>121000262</stId>
+			<stNm>강남역</stNm>
+			<staOrd>56</staOrd>
+			<stationNm1>래미안에스티지에스</stationNm1>
+			<stationNm2>역삼중학교.강남세브란스병원</stationNm2>
+			<stationTp>0</stationTp>
+			<term>7</term>
+			<traSpd1>13</traSpd1>
+			<traSpd2>11</traSpd2>
+			<traTime1>277</traTime1>
+			<traTime2>1039</traTime2>
+			<vehId1>124031041</vehId1>
+			<vehId2>124031152</vehId2>
+		</itemList>
+		<itemList>
+			<adirection>상계주공7단지</adirection>
+			<arrmsg1>운행종료</arrmsg1>
+			<arrmsg2>운행종료</arrmsg2>
+			<arrmsgSec1>첫 번째 버스 운행종료</arrmsgSec1>
+			<arrmsgSec2>두 번째 버스 운행종료</arrmsgSec2>
+			<arsId>22339</arsId>
+			<busRouteAbrv>N61</busRouteAbrv>
+			<busRouteId>100100589</busRouteId>
+			<busType1>0</busType1>
+			<busType2>0</busType2>
+			<congestion1>0</congestion1>
+			<congestion2>0</congestion2>
+			<deTourAt>00</deTourAt>
+			<firstTm>2340  </firstTm>
+			<gpsX>127.0268505284</gpsX>
+			<gpsY>37.4975009943</gpsY>
+			<isArrive1>0</isArrive1>
+			<isArrive2>0</isArrive2>
+			<isFullFlag1>0</isFullFlag1>
+			<isFullFlag2>0</isFullFlag2>
+			<isLast1>0</isLast1>
+			<isLast2>0</isLast2>
+			<lastTm>0410  </lastTm>
+			<nextBus></nextBus>
+			<nxtStn>강남역.역삼세무서</nxtStn>
+			<posX>202374.04422700306</posX>
+			<posY>444233.0800207369</posY>
+			<rerdieDiv1>2</rerdieDiv1>
+			<rerdieDiv2>2</rerdieDiv2>
+			<rerideNum1>0</rerideNum1>
+			<rerideNum2>0</rerideNum2>
+			<routeType>3</routeType>
+			<rtNm>N61</rtNm>
+			<sectNm>롯데칠성~강남역</sectNm>
+			<sectOrd1>0</sectOrd1>
+			<sectOrd2>0</sectOrd2>
+			<stId>121000262</stId>
+			<stNm>강남역</stNm>
+			<staOrd>42</staOrd>
+			<stationTp>0</stationTp>
+			<term>20</term>
+			<traSpd1>0</traSpd1>
+			<traSpd2>0</traSpd2>
+			<traTime1>0</traTime1>
+			<traTime2>0</traTime2>
+			<vehId1>0</vehId1>
+			<vehId2>0</vehId2>
+		</itemList>
+		<itemList>
+			<adirection>염곡공영차고지</adirection>
+			<arrmsg1>운행종료</arrmsg1>
+			<arrmsg2>운행종료</arrmsg2>
+			<arrmsgSec1>첫 번째 버스 운행종료</arrmsgSec1>
+			<arrmsgSec2>두 번째 버스 운행종료</arrmsgSec2>
+			<arsId>22339</arsId>
+			<busRouteAbrv>N64</busRouteAbrv>
+			<busRouteId>115000010</busRouteId>
+			<busType1>0</busType1>
+			<busType2>0</busType2>
+			<congestion1>0</congestion1>
+			<congestion2>0</congestion2>
+			<deTourAt>00</deTourAt>
+			<firstTm>2340  </firstTm>
+			<gpsX>127.0268505284</gpsX>
+			<gpsY>37.4975009943</gpsY>
+			<isArrive1>0</isArrive1>
+			<isArrive2>0</isArrive2>
+			<isFullFlag1>0</isFullFlag1>
+			<isFullFlag2>0</isFullFlag2>
+			<isLast1>0</isLast1>
+			<isLast2>0</isLast2>
+			<lastTm>0320  </lastTm>
+			<nextBus></nextBus>
+			<nxtStn>강남역.역삼세무서</nxtStn>
+			<posX>202374.04422700306</posX>
+			<posY>444233.0800207369</posY>
+			<rerdieDiv1>2</rerdieDiv1>
+			<rerdieDiv2>2</rerdieDiv2>
+			<rerideNum1>0</rerideNum1>
+			<rerideNum2>0</rerideNum2>
+			<routeType>3</routeType>
+			<rtNm>N64</rtNm>
+			<sectNm>롯데칠성~강남역</sectNm>
+			<sectOrd1>0</sectOrd1>
+			<sectOrd2>0</sectOrd2>
+			<stId>121000262</stId>
+			<stNm>강남역</stNm>
+			<staOrd>73</staOrd>
+			<stationTp>0</stationTp>
+			<term>30</term>
+			<traSpd1>0</traSpd1>
+			<traSpd2>0</traSpd2>
+			<traTime1>0</traTime1>
+			<traTime2>0</traTime2>
+			<vehId1>0</vehId1>
+			<vehId2>0</vehId2>
+		</itemList>
+	</msgBody>
+</ServiceResult>

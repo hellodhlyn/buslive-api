@@ -29,6 +29,10 @@ func NewSeoulBusStore(host, apiKey string) *SeoulBusStore {
 	}
 }
 
+func (*SeoulBusStore) GetRegion() string {
+	return "seoul"
+}
+
 type responseData[T interface{}] struct {
 	Header struct {
 		Code    string `xml:"headerCd"`
@@ -71,7 +75,8 @@ func (s *SeoulBusStore) GetNearbyStations(ctx context.Context, lat, lng float64)
 		lng, _ := strconv.ParseFloat(station.Lng, 64)
 		result[i] = Station{
 			Name:     station.StationName,
-			ID:       station.StationID,
+			Region:   s.GetRegion(),
+			ID:       station.StationCode, // 서울시 버스 API는 정류장 코드를 식별자로 사용함
 			Code:     station.StationCode,
 			Position: StationPosition{Lat: lat, Lng: lng},
 		}
@@ -82,6 +87,57 @@ func (s *SeoulBusStore) GetNearbyStations(ctx context.Context, lat, lng float64)
 		return i.Code == "" || i.Code == "0" || strings.HasSuffix(i.Name, "(경유)")
 	})
 	return result, nil
+}
+
+type arrivalData struct {
+	RouteName       string `xml:"busRouteAbrv"`
+	StationName     string `xml:"stNm"`
+	NextStationName string `xml:"nxtStn"`
+	StationIndex    int    `xml:"staOrd"`
+
+	RemainingSecondsFirst  int `xml:"traTime1"`
+	RemainingSecondsSecond int `xml:"traTime2"`
+	StationIndexFirst      int `xml:"sectOrd1"`
+	StationIndexSecond     int `xml:"sectOrd2"`
+}
+
+// GetStationArrivals 는 지정된 정류장의 도착 정보를 반환합니다.
+func (s *SeoulBusStore) GetStationArrivals(ctx context.Context, stationID string) ([]StationArrivals, error) {
+	path := "/api/rest/stationinfo/getStationByUid"
+	params := map[string]string{
+		"arsId": stationID,
+	}
+
+	var data responseData[[]arrivalData]
+	err := s.requestGet(ctx, path, params, &data)
+	if err != nil {
+		return nil, err
+	}
+
+	arrivals := make([]StationArrivals, len(data.Body.Data))
+	for i, arrival := range data.Body.Data {
+		arrivals[i] = StationArrivals{
+			RouteName:       arrival.RouteName,
+			NextStationName: arrival.NextStationName,
+		}
+
+		positions := make([]StationArrivalPosition, 0, 2)
+		if arrival.StationIndexFirst > 0 {
+			positions = append(positions, StationArrivalPosition{
+				RemainingSeconds: arrival.RemainingSecondsFirst,
+				RemainingStops:   arrival.StationIndex - arrival.StationIndexFirst,
+			})
+		}
+		if arrival.StationIndexSecond > 0 {
+			positions = append(positions, StationArrivalPosition{
+				RemainingSeconds: arrival.RemainingSecondsSecond,
+				RemainingStops:   arrival.StationIndex - arrival.StationIndexSecond,
+			})
+		}
+		arrivals[i].Positions = positions
+	}
+
+	return arrivals, nil
 }
 
 func (s *SeoulBusStore) requestGet(ctx context.Context, path string, params map[string]string, data interface{}) error {
