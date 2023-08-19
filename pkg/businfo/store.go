@@ -17,9 +17,11 @@ type StationPosition struct {
 }
 
 type StationArrivals struct {
+	RouteID         string                   `json:"routeId"`         // 100100055
 	RouteName       string                   `json:"routeName"`       // 340
 	NextStationName string                   `json:"nextStationName"` // 수협서초지점
 	Positions       []StationArrivalPosition `json:"positions"`
+	UpdatedAt       int64                    `json:"updatedAt"`
 }
 
 type StationArrivalPosition struct {

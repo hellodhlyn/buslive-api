@@ -8,6 +8,7 @@ import (
 	"net/http"
 	"strconv"
 	"strings"
+	"time"
 
 	"golang.org/x/exp/slices"
 )
@@ -91,6 +92,7 @@ func (s *SeoulBusStore) GetNearbyStations(ctx context.Context, lat, lng float64)
 
 type arrivalData struct {
 	RouteName       string `xml:"busRouteAbrv"`
+	RouteID         string `xml:"busRouteId"`
 	StationName     string `xml:"stNm"`
 	NextStationName string `xml:"nxtStn"`
 	StationIndex    int    `xml:"staOrd"`
@@ -117,6 +119,7 @@ func (s *SeoulBusStore) GetStationArrivals(ctx context.Context, stationID string
 	arrivals := make([]StationArrivals, len(data.Body.Data))
 	for i, arrival := range data.Body.Data {
 		arrivals[i] = StationArrivals{
+			RouteID:         arrival.RouteID,
 			RouteName:       arrival.RouteName,
 			NextStationName: arrival.NextStationName,
 		}
@@ -135,6 +138,7 @@ func (s *SeoulBusStore) GetStationArrivals(ctx context.Context, stationID string
 			})
 		}
 		arrivals[i].Positions = positions
+		arrivals[i].UpdatedAt = time.Now().UnixMilli()
 	}
 
 	return arrivals, nil
